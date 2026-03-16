@@ -7,7 +7,7 @@ Collection d'outils OSINT prêts à l'emploi. Tous les launchers sont dans `bin/
 ## Installation
 
 ```zsh
-echo 'export PATH="$PATH:/Users/mounir/ProjetsCoding/OSINT_GIT/bin"' >> ~/.zshrc
+echo 'export PATH="$PATH:/Users/OSINT_GIT/bin"' >> ~/.zshrc
 source ~/.zshrc
 ```
 

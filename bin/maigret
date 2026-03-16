@@ -1,0 +1,16 @@
+#!/bin/zsh
+OSINT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+cd "$OSINT_DIR/maigret"
+if [ ! -d ".venv" ]; then
+  echo "[*] Installation Maigret..."
+  python3 -m venv .venv
+  source .venv/bin/activate
+  pip install . -q
+else
+  source .venv/bin/activate
+fi
+if [ $# -eq 0 ]; then
+  python3 -m maigret --help
+else
+  python3 -m maigret "$@"
+fi

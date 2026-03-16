@@ -1,0 +1,16 @@
+#!/bin/zsh
+OSINT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+cd "$OSINT_DIR/Osintgram"
+if [ ! -d ".venv" ]; then
+  echo "[*] Installation des dépendances Osintgram..."
+  python3 -m venv .venv
+  source .venv/bin/activate
+  pip install -r requirements.txt -q
+else
+  source .venv/bin/activate
+fi
+if [ $# -eq 0 ]; then
+  python3 main.py --help
+else
+  python3 main.py "$@"
+fi

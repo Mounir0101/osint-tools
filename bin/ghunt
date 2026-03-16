@@ -1,0 +1,17 @@
+#!/bin/zsh
+OSINT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+cd "$OSINT_DIR/GHunt"
+if [ ! -d ".venv" ]; then
+  echo "[*] Installation GHunt..."
+  python3 -m venv .venv
+  source .venv/bin/activate
+  pip install pipx -q && pip install poetry -q
+  pip install -e . -q
+else
+  source .venv/bin/activate
+fi
+if [ $# -eq 0 ]; then
+  python3 main.py --help
+else
+  python3 main.py "$@"
+fi

@@ -1,0 +1,16 @@
+#!/bin/zsh
+OSINT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+cd "$OSINT_DIR/sherlock"
+if [ ! -d ".venv" ]; then
+  echo "[*] Installation Sherlock..."
+  python3 -m venv .venv
+  source .venv/bin/activate
+  pip install . -q
+else
+  source .venv/bin/activate
+fi
+if [ $# -eq 0 ]; then
+  python3 -m sherlock_project --help
+else
+  python3 -m sherlock_project "$@"
+fi

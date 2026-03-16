@@ -1,0 +1,16 @@
+#!/bin/zsh
+OSINT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+cd "$OSINT_DIR/h8mail"
+if [ ! -d ".venv" ]; then
+  echo "[*] Installation H8mail..."
+  python3 -m venv .venv
+  source .venv/bin/activate
+  pip install . -q
+else
+  source .venv/bin/activate
+fi
+if [ $# -eq 0 ]; then
+  h8mail --help
+else
+  h8mail "$@"
+fi
